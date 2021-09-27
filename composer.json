@@ -1,0 +1,32 @@
+{
+    "name": "nksquare/auth-log",
+    "description": "Library for logging user authentication activity",
+    "autoload": {
+        "psr-4": {
+            "Nksquare\\AuthLog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Thungdemo",
+            "email": "tezong@nksqure.co.in"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "illuminate/auth": "^5.6|^6.0|^7.0|^8.0",
+        "illuminate/database": "^5.6|^6.0|^7.0|^8.0",
+        "illuminate/config": "^5.6|^6.0|^7.0|^8.0",
+        "illuminate/console": "^5.6|^6.0|^7.0|^8.0",
+        "illuminate/database": "^5.6|^6.0|^7.0|^8.0",
+        "illuminate/filesystem": "^5.6|^6.0|^7.0|^8.0",
+        "illuminate/support": "^5.6|^6.0|^7.0|^8.0",
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nksquare\\AuthLog\\Providers\\AuthLogServiceProvider"
+            ]
+        }
+    }
+}

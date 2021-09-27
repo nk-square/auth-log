@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateAuthLogsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('auth_logs', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('guard',100);
+            $table->string('activity',100);
+            $table->nullableMorphs('authenticable');
+            $table->text('credentials')->nullable();;
+            $table->string('status',100)->nullable();
+            $table->string('ip_address',100)->nullable();
+            $table->timestamp('auth_at');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('auth_logs');
+    }
+}
