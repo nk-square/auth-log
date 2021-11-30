@@ -10,6 +10,7 @@ Add the following lines to your composer.json file
         "type": "git",
         "url": "https://github.com/nk-square/auth-log.git"
     }
+]
 .....
 ```
 Run composer
@@ -48,6 +49,11 @@ If your user table uses a different field other than the email field for authent
     |
     */
     'credentials' => [
-        'web' => 'username',
+        'web' => 'username', //specify your authenticating field here
     ]
+```
+You can access the user whose activity was logged via the ```authenticable``` attribute. Please note that the attribute is only accessible for successful login/logout activity.
+```
+$auth = AuthLog::where('status','success')->where('activity','login')->first();
+$auth->authenticable;
 ```
