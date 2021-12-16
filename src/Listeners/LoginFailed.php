@@ -33,6 +33,7 @@ class LoginFailed
         $authLog->status = 'failure';
         $authLog->guard = $event->guard;
         $authLog->credentials = Arr::only($event->credentials,config('authlog.credentials.'.$event->guard,'email'));
+
         $authLog->save();
         if($event->user)
         {

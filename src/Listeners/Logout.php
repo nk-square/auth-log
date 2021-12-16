@@ -27,10 +27,12 @@ class Logout
      */
     public function handle($event)
     {
-        $authLog = AuthLog::make();
-        $authLog->activity = 'logout';
-        $authLog->guard = $event->guard;
-        $authLog->save();
-        $authLog->authenticable()->associate($event->user)->save();
+        if($event->user){
+            $authLog = AuthLog::make();
+            $authLog->activity = 'logout';
+            $authLog->guard = $event->guard;
+            $authLog->save();
+            $authLog->authenticable()->associate($event->user)->save();
+        }
     }
 }
