@@ -27,10 +27,12 @@ class LoginSuccess
      */
     public function handle($event)
     {
+        $login = config('authlog.credentials.'.$event->guard,'email');
         $authLog = AuthLog::make();
         $authLog->activity = 'login';
         $authLog->status = 'success';
         $authLog->guard = $event->guard;
+        $authLog->credentials = [$login=>$event->user[$login]];
         $authLog->save();
         $authLog->authenticable()->associate($event->user)->save();
     }
